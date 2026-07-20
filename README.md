@@ -1,36 +1,134 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 👜 SAC237 — La maroquinerie du 237
 
-## Getting Started
+Boutique en ligne de vente de sacs (sacs à main, sacs à dos, pochettes, cabas) pensée pour le marché **camerounais** 🇨🇲.
 
-First, run the development server:
+Commande simple **via WhatsApp**, **paiement à la livraison**, livraison Douala & Yaoundé.
+
+**En ligne :** _(ajoutez ici votre URL Vercel, ex. https://sac237.vercel.app)_
+
+---
+
+## ✨ Fonctionnalités (Phase 1)
+
+- **Page d'accueil** avec hero, barre de réassurance et catalogue de produits
+- **Pages produit** détaillées (`/produits/[slug]`)
+- **Commande en 1 clic sur WhatsApp** : chaque bouton ouvre WhatsApp avec un message pré-rempli mentionnant le sac choisi et son prix
+- **Prix en FCFA**, interface 100 % en français
+- **Responsive** (optimisé mobile, l'usage principal au Cameroun)
+- Barre de réassurance : livraison 24-48h · paiement à la livraison · qualité garantie
+
+---
+
+## 🛠️ Stack technique
+
+| Élément | Techno |
+|---|---|
+| Framework | [Next.js 16](https://nextjs.org) (App Router, Turbopack) |
+| Langage | TypeScript |
+| Style | Tailwind CSS v4 |
+| Polices | Geist (texte) + Poppins (titres) |
+| Hébergement | Vercel |
+
+---
+
+## 🚀 Lancer le projet en local
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install      # première fois seulement
+npm run dev      # démarre le serveur de développement
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Puis ouvrez **http://localhost:3000** (ou un autre port avec `npm run dev -- -p 3100`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Autres commandes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build    # build de production
+npm run start    # lance le build de production
+npm run lint     # vérifie le code
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ✏️ Personnaliser la boutique
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Tout est centralisé dans **3 fichiers**, aucune connaissance technique poussée requise :
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 1. Infos du site — [`src/lib/site.ts`](src/lib/site.ts)
 
-## Deploy on Vercel
+```ts
+whatsappNumber: "237600000000",  // 👈 votre vrai numéro (format 237XXXXXXXXX, sans + ni espaces)
+name: "SAC237",
+tagline: "La maroquinerie du 237, livrée chez toi",
+city: "Douala & Yaoundé",
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 2. Les produits — [`src/lib/products.ts`](src/lib/products.ts)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ajoutez / modifiez vos sacs dans le tableau `products` :
+
+```ts
+{
+  slug: "sac-a-main-elegance",     // identifiant unique dans l'URL
+  name: "Sac à main Élégance",
+  price: 25000,                    // en FCFA
+  category: "Sac à main",
+  description: "…",
+  from: "#b45309", to: "#78350f",  // couleurs du visuel (en attendant les photos)
+}
+```
+
+### 3. Ajouter de vraies photos
+
+Actuellement les visuels sont des **placeholders colorés**. Pour mettre de vraies photos :
+
+1. Déposez vos images dans le dossier `public/photos/` (ex. `public/photos/sac-elegance.jpg`)
+2. Remplacez le composant [`ProductThumb`](src/components/ProductThumb.tsx) par le composant `<Image>` de Next.js
+   pointant sur `/photos/votre-image.jpg`
+
+> 💡 C'est l'amélioration la plus importante pour la conversion : de vraies photos transforment l'apparence du site.
+
+---
+
+## 🗂️ Structure du projet
+
+```
+src/
+├── app/
+│   ├── layout.tsx               # Layout global (header, footer, polices)
+│   ├── page.tsx                 # Page d'accueil (hero + catalogue)
+│   ├── globals.css              # Styles globaux
+│   └── produits/[slug]/page.tsx # Page détail d'un produit
+├── components/
+│   ├── Header.tsx / Footer.tsx
+│   ├── TrustBar.tsx             # Barre de réassurance
+│   ├── ProductCard.tsx          # Carte produit (grille)
+│   ├── ProductThumb.tsx         # Visuel produit (placeholder)
+│   ├── WhatsAppButton.tsx       # Bouton de commande
+│   └── icons.tsx                # Icônes SVG
+└── lib/
+    ├── site.ts                  # Config du site
+    ├── products.ts              # Catalogue + helpers (prix, recherche)
+    └── whatsapp.ts              # Génération des liens WhatsApp
+```
+
+---
+
+## 🌍 Déploiement (Vercel)
+
+Le projet est connecté à Vercel : **chaque `git push` sur `main` redéploie automatiquement** le site.
+
+Pour déployer un nouveau projet : importez le dépôt GitHub sur [vercel.com](https://vercel.com) → *Add New… → Project*. Next.js est détecté automatiquement, aucune configuration nécessaire.
+
+---
+
+## 🗺️ Feuille de route
+
+- [x] **Phase 1 — Vitrine + commande WhatsApp** _(fait)_
+- [ ] **Phase 2 — Panier + formulaire de commande** (nom, téléphone, ville, quartier)
+- [ ] **Phase 3 — Paiement Mobile Money** (MTN MoMo / Orange Money via Fapshi, Campay ou Notch Pay) + espace admin
+- [ ] Catégories & filtres, avis clients, nom de domaine perso
+
+---
+
+_Projet personnel — Arthur DEUMENI._
