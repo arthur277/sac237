@@ -57,7 +57,7 @@ Tout est centralisé dans **3 fichiers**, aucune connaissance technique poussée
 ### 1. Infos du site — [`src/lib/site.ts`](src/lib/site.ts)
 
 ```ts
-whatsappNumber: "237600000000",  // 👈 votre vrai numéro (format 237XXXXXXXXX, sans + ni espaces)
+whatsappNumber: "237698330321",  // format 237XXXXXXXXX, sans + ni espaces
 name: "SAC237",
 tagline: "La maroquinerie du 237, livrée chez toi",
 city: "Douala & Yaoundé",
