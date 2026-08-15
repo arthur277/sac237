@@ -1,14 +1,40 @@
+import Image from "next/image";
 import type { Product } from "@/lib/products";
 
-// Visuel placeholder soigné (dégradé + halo + glyphe sac).
-// 👉 Remplacez par <Image src="/photos/..." /> quand vous aurez les vraies photos.
+// Visuel d'un produit.
+// Affiche la photo si le produit en a une (`src`), sinon un dégradé de secours
+// pour que le site reste présentable tant que les photos ne sont pas déposées.
 export function ProductThumb({
   product,
+  src,
+  sizes,
+  priority = false,
   className = "",
 }: {
   product: Product;
+  /** URL de la photo, ex. `/photos/mon-sac/1.jpg`. Voir `lib/photos.ts`. */
+  src?: string;
+  /** Largeur d'affichage prévue, pour que le navigateur choisisse la bonne taille. */
+  sizes?: string;
+  /** À activer pour l'image principale visible d'emblée (améliore le LCP). */
+  priority?: boolean;
   className?: string;
 }) {
+  if (src) {
+    return (
+      <div className={`relative overflow-hidden bg-neutral-100 ${className}`}>
+        <Image
+          src={src}
+          alt={`${product.name} — ${product.category} SAC237`}
+          fill
+          sizes={sizes ?? "(max-width: 640px) 50vw, 25vw"}
+          priority={priority}
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className={`relative flex items-center justify-center overflow-hidden ${className}`}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProduct, formatPrice, products } from "@/lib/products";
+import { getProductPhotos } from "@/lib/photos";
 import { orderLink } from "@/lib/whatsapp";
 import { ProductThumb } from "@/components/ProductThumb";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -18,6 +19,8 @@ export default async function ProductPage(props: PageProps<"/produits/[slug]">) 
     notFound();
   }
 
+  const [cover, ...autresPhotos] = getProductPhotos(product.slug);
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
       <Link
@@ -28,8 +31,35 @@ export default async function ProductPage(props: PageProps<"/produits/[slug]">) 
       </Link>
 
       <div className="mt-6 grid gap-8 md:grid-cols-2">
-        <div className="relative aspect-square overflow-hidden rounded-2xl">
-          <ProductThumb product={product} className="h-full w-full" />
+        <div>
+          <div className="relative aspect-square overflow-hidden rounded-2xl">
+            <ProductThumb
+              product={product}
+              src={cover}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+              className="h-full w-full"
+            />
+          </div>
+
+          {/* Vues supplémentaires, affichées seulement si elles existent. */}
+          {autresPhotos.length > 0 && (
+            <div className="mt-3 grid grid-cols-4 gap-3">
+              {autresPhotos.map((photo) => (
+                <div
+                  key={photo}
+                  className="relative aspect-square overflow-hidden rounded-xl"
+                >
+                  <ProductThumb
+                    product={product}
+                    src={photo}
+                    sizes="(max-width: 768px) 25vw, 12vw"
+                    className="h-full w-full"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="flex flex-col">

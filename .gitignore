@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# photos brutes du téléphone (non recadrées) et vidéos sources :
+# on garde ça en local, seules les images recadrées de public/photos/ sont publiées
+/photos-brutes/

@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { formatPrice, type Product } from "@/lib/products";
+import { getCoverPhoto } from "@/lib/photos";
 import { ProductThumb } from "./ProductThumb";
 
 // Carte produit affichée dans la grille de la page d'accueil.
 export function ProductCard({ product }: { product: Product }) {
+  const cover = getCoverPhoto(product.slug);
+
   return (
     <Link
       href={`/produits/${product.slug}`}
@@ -12,6 +15,8 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="relative aspect-square overflow-hidden">
         <ProductThumb
           product={product}
+          src={cover}
+          sizes="(max-width: 1024px) 50vw, 25vw"
           className="h-full w-full transition-transform duration-300 group-hover:scale-105"
         />
       </div>
