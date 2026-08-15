@@ -42,6 +42,17 @@ export const products: Product[] = [
     to: "#78350f",
   },
   {
+    slug: "sac-demi-lune",
+    name: "Demi-Lune Tropics",
+    price: 73500, // prix confirmé
+    category: "Sac à main",
+    description:
+      "Sac demi-lune en cuir lisse, boucle carrée et anse arrondie. Livré avec sa bandoulière amovible : porté à la main ou en travers, selon l'occasion.",
+    colors: ["Camel", "Marine", "Ivoire", "Gris"],
+    from: "#78716c",
+    to: "#44403c",
+  },
+  {
     slug: "sac-bandouliere",
     name: "Bandoulière Mors",
     price: 65000, // prix confirmé
