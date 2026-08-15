@@ -1,6 +1,6 @@
-# 👜 SAC237 — La maroquinerie du 237
+# 👜 TROPICS — La maroquinerie du 237
 
-Boutique en ligne de vente de sacs (sacs à main, sacs à dos, pochettes, cabas) pensée pour le marché **camerounais** 🇨🇲.
+Boutique en ligne de la marque **TROPICS** : sacs à main, sacs bandoulière et cabas en cuir, pensée pour le marché **camerounais** 🇨🇲.
 
 Commande simple **via WhatsApp**, **paiement à la livraison**, livraison Douala & Yaoundé.
 
@@ -58,7 +58,7 @@ Tout est centralisé dans **3 fichiers**, aucune connaissance technique poussée
 
 ```ts
 whatsappNumber: "237698330321",  // format 237XXXXXXXXX, sans + ni espaces
-name: "SAC237",
+name: "TROPICS",
 tagline: "La maroquinerie du 237, livrée chez toi",
 city: "Douala & Yaoundé",
 ```

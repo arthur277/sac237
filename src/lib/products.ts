@@ -20,7 +20,7 @@ export type Product = {
 export const products: Product[] = [
   {
     slug: "sac-cartable",
-    name: "Cartable Tropics",
+    name: "Cartable",
     price: 71500, // prix confirmé
     category: "Sac à main",
     description:
@@ -43,7 +43,7 @@ export const products: Product[] = [
   },
   {
     slug: "sac-demi-lune",
-    name: "Demi-Lune Tropics",
+    name: "Demi-Lune",
     price: 73500, // prix confirmé
     category: "Sac à main",
     description:

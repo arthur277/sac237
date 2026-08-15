@@ -14,8 +14,10 @@ export function WhatsAppButton({
   variant = "solid",
   className = "",
 }: Props) {
+  // `shrink-0` + `whitespace-nowrap` : sur écran étroit le bouton garde sa
+  // forme au lieu de se casser sur deux lignes.
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition-colors";
+    "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3 font-semibold transition-colors";
   const styles =
     variant === "solid"
       ? "bg-[#25D366] text-white hover:bg-[#1eb85a]"
@@ -27,7 +29,7 @@ export function WhatsAppButton({
       rel="noopener noreferrer"
       className={`${base} ${styles} ${className}`}
     >
-      <WhatsAppIcon className="h-5 w-5" />
+      <WhatsAppIcon className="h-5 w-5 shrink-0" />
       {children}
     </a>
   );

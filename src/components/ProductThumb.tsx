@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Product } from "@/lib/products";
+import { site } from "@/lib/site";
 
 // Visuel d'un produit.
 // Affiche la photo si le produit en a une (`src`), sinon un dégradé de secours
@@ -25,7 +26,7 @@ export function ProductThumb({
       <div className={`relative overflow-hidden bg-neutral-100 ${className}`}>
         <Image
           src={src}
-          alt={`${product.name} — ${product.category} SAC237`}
+          alt={`${product.name} — ${product.category} ${site.name}`}
           fill
           sizes={sizes ?? "(max-width: 640px) 50vw, 25vw"}
           priority={priority}
