@@ -76,6 +76,30 @@ export default async function ProductPage(props: PageProps<"/produits/[slug]">) 
             {product.description}
           </p>
 
+          {product.colors.length > 0 && (
+            <div className="mt-6">
+              <h2 className="text-sm font-semibold text-neutral-900">
+                Coloris disponibles
+                <span className="ml-2 font-normal text-neutral-500">
+                  ({product.colors.length})
+                </span>
+              </h2>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {product.colors.map((color) => (
+                  <li
+                    key={color}
+                    className="rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm text-neutral-700"
+                  >
+                    {color}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-3 text-sm text-neutral-500">
+                Précisez votre coloris dans le message WhatsApp.
+              </p>
+            </div>
+          )}
+
           <div className="mt-8">
             <WhatsAppButton href={orderLink(product)} className="w-full sm:w-auto">
               Commander ce sac sur WhatsApp

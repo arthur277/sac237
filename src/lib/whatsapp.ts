@@ -7,12 +7,15 @@ export function whatsappLink(message: string): string {
 }
 
 // Lien de commande pour un produit précis.
+// Le coloris est laissé à compléter par le client : le message arrive
+// pré-rempli dans WhatsApp, il n'a plus qu'à écrire la couleur voulue.
 export function orderLink(product: Product): string {
   const message =
     `Bonjour ${site.name} 👋\n\n` +
     `Je suis intéressé(e) par :\n` +
-    `• ${product.name} — ${formatPrice(product.price)}\n\n` +
-    `Est-il disponible ? Merci !`;
+    `• ${product.name} — ${formatPrice(product.price)}\n` +
+    (product.colors.length > 0 ? `• Coloris souhaité : \n` : "") +
+    `\nEst-il disponible ? Merci !`;
   return whatsappLink(message);
 }
 
