@@ -25,7 +25,7 @@ export function TrustBar() {
       <div className="mx-auto grid max-w-5xl gap-6 px-4 py-8 sm:grid-cols-3">
         {features.map(({ Icon, title, text }) => (
           <div key={title} className="flex items-center gap-3">
-            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-amber-100 text-amber-800">
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-100 text-brand-700">
               <Icon />
             </span>
             <div>

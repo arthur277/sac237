@@ -11,4 +11,8 @@ export const site = {
   whatsappNumber: "237698330321",
   city: "Douala & Yaoundé",
   currency: "FCFA",
+  // Domaine de production, utilisé pour les URL absolues de l'aperçu de
+  // partage (WhatsApp, Facebook). NEXT_PUBLIC_SITE_URL permet de basculer
+  // sur un nom de domaine propre sans toucher au code.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://sac237.vercel.app",
 };

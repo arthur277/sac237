@@ -9,7 +9,7 @@ export function ProductThumb({
   product,
   src,
   sizes,
-  priority = false,
+  preload = false,
   className = "",
 }: {
   product: Product;
@@ -17,8 +17,8 @@ export function ProductThumb({
   src?: string;
   /** Largeur d'affichage prévue, pour que le navigateur choisisse la bonne taille. */
   sizes?: string;
-  /** À activer pour l'image principale visible d'emblée (améliore le LCP). */
-  priority?: boolean;
+  /** À activer pour l'image principale visible d'emblée : la précharge (LCP). */
+  preload?: boolean;
   className?: string;
 }) {
   if (src) {
@@ -29,7 +29,7 @@ export function ProductThumb({
           alt={`${product.name} — ${product.category} ${site.name}`}
           fill
           sizes={sizes ?? "(max-width: 640px) 50vw, 25vw"}
-          priority={priority}
+          preload={preload}
           className="object-cover"
         />
       </div>

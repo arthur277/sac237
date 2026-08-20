@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-amber-700 via-amber-800 to-amber-950 text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-brand-500 via-brand-600 to-brand-800 text-white">
         {/* Motifs décoratifs */}
         <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
         <div className="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-black/20 blur-2xl" />
@@ -21,13 +21,13 @@ export default function Home() {
           <h1 className="mx-auto mt-6 max-w-2xl text-4xl font-extrabold leading-tight tracking-tight sm:text-6xl">
             {site.tagline}
           </h1>
-          <p className="mx-auto mt-5 max-w-xl text-lg text-amber-50/90">
+          <p className="mx-auto mt-5 max-w-xl text-lg text-white/85">
             {site.description}
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="#catalogue"
-              className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3 font-semibold text-amber-900 shadow-lg transition-transform hover:scale-105"
+              className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3 font-semibold text-brand-700 shadow-lg transition-transform hover:scale-105"
             >
               Voir les sacs
             </a>

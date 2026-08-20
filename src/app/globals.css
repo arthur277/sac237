@@ -5,6 +5,24 @@
   --font-display: var(--font-poppins);
 }
 
+/* Couleurs de marque TROPICS.
+   `brand-600` est l'orange exact du logo (#ec660d, relevé sur le fichier
+   fourni par la marque) ; le reste de l'échelle en dérive pour les fonds
+   clairs et les dégradés. */
+@theme {
+  --color-brand-50: #fff7ed;
+  --color-brand-100: #ffedd5;
+  --color-brand-200: #fed7aa;
+  --color-brand-300: #fdba74;
+  --color-brand-400: #fb923c;
+  --color-brand-500: #f97316;
+  --color-brand-600: #ec660d;
+  --color-brand-700: #c2410c;
+  --color-brand-800: #9a3412;
+  --color-brand-900: #7c2d12;
+  --color-brand-950: #431407;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -18,4 +36,10 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display), var(--font-sans), sans-serif;
+}
+
+/* Sélection de texte aux couleurs de la marque */
+::selection {
+  background-color: var(--color-brand-600);
+  color: #fff;
 }

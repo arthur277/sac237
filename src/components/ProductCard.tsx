@@ -21,7 +21,7 @@ export function ProductCard({ product }: { product: Product }) {
         />
       </div>
       <div className="flex flex-1 flex-col p-4">
-        <span className="text-xs font-medium uppercase tracking-wide text-amber-700">
+        <span className="text-xs font-medium uppercase tracking-wide text-brand-600">
           {product.category}
         </span>
         <h3 className="mt-1 font-semibold text-neutral-900">{product.name}</h3>

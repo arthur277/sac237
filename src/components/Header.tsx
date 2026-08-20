@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { contactLink } from "@/lib/whatsapp";
@@ -6,21 +7,21 @@ import { WhatsAppButton } from "./WhatsAppButton";
 export function Header() {
   return (
     <header className="sticky top-0 z-10 border-b border-black/5 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-        {/* `min-w-0` laisse le nom se tronquer plutôt que pousser le bouton
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
+        {/* `min-w-0` laisse le logo se réduire plutôt que pousser le bouton
             hors de l'écran sur les petits mobiles. */}
-        <Link href="/" className="flex min-w-0 items-center gap-2.5">
-          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-amber-600 to-amber-800 text-sm font-black text-white shadow-sm">
-            237
-          </span>
-          <span className="flex min-w-0 flex-col leading-none">
-            <span className="truncate text-lg font-extrabold tracking-tight text-neutral-900">
-              {site.name}
-            </span>
-            <span className="hidden text-xs text-neutral-500 sm:block">
-              Maroquinerie · 237
-            </span>
-          </span>
+        <Link href="/" className="min-w-0" aria-label={`${site.name} — accueil`}>
+          <Image
+            src="/logo-tropics.png"
+            alt={site.name}
+            width={706}
+            height={220}
+            // Logo au-dessus de la ligne de flottaison, mais ce n'est pas le
+            // LCP : on le charge tout de suite sans le précharger.
+            loading="eager"
+            fetchPriority="high"
+            className="h-10 w-auto sm:h-14"
+          />
         </Link>
         <WhatsAppButton href={contactLink()} className="px-4 py-2 text-sm">
           Nous contacter

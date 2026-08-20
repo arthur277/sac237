@@ -16,9 +16,22 @@ const poppins = Poppins({
   weight: ["600", "700", "800"],
 });
 
+const titre = `${site.name} — ${site.tagline}`;
+
+// L'image de partage et les icônes viennent des conventions de fichiers du
+// dossier `app/` : opengraph-image.jpg, favicon.ico, icon.png, apple-icon.png.
 export const metadata: Metadata = {
-  title: `${site.name} — ${site.tagline}`,
+  metadataBase: new URL(site.url),
+  title: titre,
   description: site.description,
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    siteName: site.name,
+    title: titre,
+    description: site.description,
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({

@@ -25,7 +25,7 @@ export default async function ProductPage(props: PageProps<"/produits/[slug]">) 
     <div className="mx-auto max-w-5xl px-4 py-10">
       <Link
         href="/"
-        className="text-sm text-amber-700 hover:underline"
+        className="text-sm text-brand-600 hover:underline"
       >
         ← Retour à la collection
       </Link>
@@ -37,7 +37,7 @@ export default async function ProductPage(props: PageProps<"/produits/[slug]">) 
               product={product}
               src={cover}
               sizes="(max-width: 768px) 100vw, 50vw"
-              priority
+              preload
               className="h-full w-full"
             />
           </div>
@@ -63,7 +63,7 @@ export default async function ProductPage(props: PageProps<"/produits/[slug]">) 
         </div>
 
         <div className="flex flex-col">
-          <span className="text-sm font-medium uppercase tracking-wide text-amber-700">
+          <span className="text-sm font-medium uppercase tracking-wide text-brand-600">
             {product.category}
           </span>
           <h1 className="mt-1 text-3xl font-extrabold text-neutral-900">
