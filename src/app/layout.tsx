@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Poppins } from "next/font/google";
+import { Geist, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { Header } from "@/components/Header";
@@ -10,10 +10,11 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+// Serif de titre : positionnement « maroquinerie italienne ». Police
+// variable, donc pas de liste de graisses à déclarer.
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
 });
 
 const titre = `${site.name} — ${site.tagline}`;
@@ -42,9 +43,9 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${poppins.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-neutral-50 text-neutral-900">
+      <body className="flex min-h-full flex-col bg-ivory text-neutral-900">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

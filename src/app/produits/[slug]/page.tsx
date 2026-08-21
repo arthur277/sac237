@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProduct, formatPrice, products } from "@/lib/products";
 import { getProductPhotos } from "@/lib/photos";
+import { swatch } from "@/lib/colors";
 import { orderLink } from "@/lib/whatsapp";
 import { ProductThumb } from "@/components/ProductThumb";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -22,7 +23,7 @@ export default async function ProductPage(props: PageProps<"/produits/[slug]">) 
   const [cover, ...autresPhotos] = getProductPhotos(product.slug);
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10">
+    <div className="mx-auto max-w-5xl px-4 pt-10 pb-28 sm:pb-10">
       <Link
         href="/"
         className="text-sm text-brand-600 hover:underline"
@@ -66,7 +67,7 @@ export default async function ProductPage(props: PageProps<"/produits/[slug]">) 
           <span className="text-sm font-medium uppercase tracking-wide text-brand-600">
             {product.category}
           </span>
-          <h1 className="mt-1 text-3xl font-extrabold text-neutral-900">
+          <h1 className="mt-1 text-3xl font-semibold text-neutral-900">
             {product.name}
           </h1>
           <p className="mt-3 text-2xl font-bold text-neutral-900">
@@ -88,8 +89,15 @@ export default async function ProductPage(props: PageProps<"/produits/[slug]">) 
                 {product.colors.map((color) => (
                   <li
                     key={color}
-                    className="rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-sm text-neutral-700"
+                    className="flex items-center gap-2 rounded-full border border-neutral-200 bg-white py-1 pl-1.5 pr-3 text-sm text-neutral-700"
                   >
+                    {/* Pastille de la teinte : on lit la couleur d'un coup
+                        d'œil, le nom reste affiché pour la commande. */}
+                    <span
+                      className="h-5 w-5 shrink-0 rounded-full ring-1 ring-black/10 ring-inset"
+                      style={{ backgroundColor: swatch(color) }}
+                      aria-hidden="true"
+                    />
                     {color}
                   </li>
                 ))}
@@ -108,6 +116,23 @@ export default async function ProductPage(props: PageProps<"/produits/[slug]">) 
               Paiement à la livraison disponible.
             </p>
           </div>
+        </div>
+      </div>
+
+      {/* Barre de commande collante sur mobile : le prix et le bouton restent
+          visibles pendant qu'on fait défiler les photos. Masquée dès sm, où le
+          bouton de la colonne de droite est déjà à l'écran. */}
+      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-black/10 bg-white/95 px-4 py-3 backdrop-blur sm:hidden">
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <p className="truncate text-xs text-neutral-500">{product.name}</p>
+            <p className="text-lg font-bold text-neutral-900">
+              {formatPrice(product.price)}
+            </p>
+          </div>
+          <WhatsAppButton href={orderLink(product)} className="px-5 py-2.5">
+            Commander
+          </WhatsAppButton>
         </div>
       </div>
     </div>

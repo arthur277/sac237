@@ -1,20 +1,26 @@
-import { TruckIcon, CashIcon, ShieldIcon } from "./icons";
+import { site } from "@/lib/site";
+import { TruckIcon, CashIcon, StoreIcon, ShieldIcon } from "./icons";
 
 const features = [
   {
+    Icon: ShieldIcon,
+    title: "100 % cuir",
+    text: "Fait avec les cuirs d'Italie",
+  },
+  {
+    Icon: StoreIcon,
+    title: "Boutique ou livraison",
+    text: `À ${site.store.name} ou chez vous`,
+  },
+  {
     Icon: TruckIcon,
     title: "Livraison rapide",
-    text: "Douala & Yaoundé en 24-48h",
+    text: `${site.city} en 24-48h`,
   },
   {
     Icon: CashIcon,
     title: "Payez à la livraison",
     text: "Vous payez quand vous recevez",
-  },
-  {
-    Icon: ShieldIcon,
-    title: "Qualité garantie",
-    text: "Sacs vérifiés avant envoi",
   },
 ];
 
@@ -22,7 +28,7 @@ const features = [
 export function TrustBar() {
   return (
     <section className="border-b border-black/5 bg-white">
-      <div className="mx-auto grid max-w-5xl gap-6 px-4 py-8 sm:grid-cols-3">
+      <div className="mx-auto grid max-w-5xl gap-6 px-4 py-8 sm:grid-cols-2 lg:grid-cols-4">
         {features.map(({ Icon, title, text }) => (
           <div key={title} className="flex items-center gap-3">
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-100 text-brand-700">

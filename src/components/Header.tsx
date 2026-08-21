@@ -6,7 +6,7 @@ import { WhatsAppButton } from "./WhatsAppButton";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-10 border-b border-black/5 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-10 border-b border-black/5 bg-ivory/90 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
         {/* `min-w-0` laisse le logo se réduire plutôt que pousser le bouton
             hors de l'écran sur les petits mobiles. */}
@@ -23,7 +23,12 @@ export function Header() {
             className="h-10 w-auto sm:h-14"
           />
         </Link>
-        <WhatsAppButton href={contactLink()} className="px-4 py-2 text-sm">
+        {/* Bouton neutre : le vert WhatsApp est gardé pour les commandes. */}
+        <WhatsAppButton
+          href={contactLink()}
+          variant="neutral"
+          className="px-4 py-2 text-sm"
+        >
           Nous contacter
         </WhatsAppButton>
       </div>

@@ -2,7 +2,7 @@
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
-  --font-display: var(--font-poppins);
+  --font-display: var(--font-playfair);
 }
 
 /* Couleurs de marque TROPICS.
@@ -21,6 +21,12 @@
   --color-brand-800: #9a3412;
   --color-brand-900: #7c2d12;
   --color-brand-950: #431407;
+
+  /* Chrome du site : ivoire chaud plutôt que gris froid — il dialogue avec le
+     cuir et les fonds crème des photos. `ink` est le brun-noir du footer :
+     il ne se bat pas avec les coloris des sacs, contrairement à un orange. */
+  --color-ivory: #faf7f2;
+  --color-ink: #1c1917;
 }
 
 html {
@@ -31,11 +37,12 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
-/* Titres en police display */
+/* Titres en serif display (Playfair) : c'est ce qui fait lire « maroquinerie »
+   plutôt que « application ». Le texte courant reste en sans. */
 h1,
 h2,
 h3 {
-  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-family: var(--font-display), Georgia, serif;
 }
 
 /* Sélection de texte aux couleurs de la marque */
